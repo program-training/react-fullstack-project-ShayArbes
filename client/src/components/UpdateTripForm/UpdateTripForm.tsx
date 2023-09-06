@@ -36,7 +36,7 @@ function UpdateTripForm() {
         newTrip,
         {
           headers: {
-            authorization: "test-token",
+            authorization: JSON.parse(localStorage.getItem('token') as string),
           },
         }
       );
@@ -66,42 +66,42 @@ function UpdateTripForm() {
         <form onSubmit={handleCreateTrip}>
           <div className="form-outline mb-4">
             <label className="form-label">name</label>
-            <input ref={nameRef} type="text" className="form-control" />
+            <input defaultValue={trip?.name} ref={nameRef} type="text" className="form-control" />
           </div>
 
           <div className="form-outline mb-4">
             <label className="form-label">destination</label>
-            <input ref={destinationRef} type="text" className="form-control" />
+            <input defaultValue={trip?.destination} ref={destinationRef} type="text" className="form-control" />
           </div>
 
           <div className="form-outline mb-4">
             <label className="form-label">img</label>
-            <input ref={imageRef} type="text" className="form-control" />
+            <input defaultValue={trip?.image} ref={imageRef} type="text" className="form-control" />
           </div>
 
           <div className="form-outline mb-4">
             <label className="form-label">activities</label>
-            <input ref={activitiesRef} type="text" className="form-control" />
+            <input defaultValue={trip?.activities} ref={activitiesRef} type="text" className="form-control" />
           </div>
 
           <div className="form-outline mb-4">
             <label className="form-label">start Date</label>
-            <input ref={startDateRef} type="date" className="form-control" />
+            <input defaultValue={trip?.startDate} ref={startDateRef} type="date" className="form-control" />
           </div>
 
           <div className="form-outline mb-4">
             <label className="form-label">end Date</label>
-            <input ref={endDateRef} type="date" className="form-control" />
+            <input defaultValue={trip?.endDate} ref={endDateRef} type="date" className="form-control" />
           </div>
 
           <div className="form-outline mb-4">
             <label className="form-label">price</label>
-            <input ref={priceRef} type="number" className="form-control" />
+            <input defaultValue={trip?.price} ref={priceRef} type="number" className="form-control" />
           </div>
 
           <div className="form-outline mb-4">
             <label className="form-label">description</label>
-            <textarea ref={descriptionRef} className="form-control"></textarea>
+            <textarea defaultValue={trip?.description} ref={descriptionRef} className="form-control"></textarea>
           </div>
 
           <button type="submit" className="btn btn-primary btn-block mb-4">

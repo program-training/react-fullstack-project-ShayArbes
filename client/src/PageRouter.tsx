@@ -6,6 +6,8 @@ import Trips from './components/Trips/Trips';
 import NewTripForm from './components/NewTripForm/NewTripForm';
 import TripDetail from "./components/TripDetail/TripDetail";
 import UpdateTripForm from "./components/UpdateTripForm/UpdateTripForm";
+import UserRegistration from "./components/UserRegistration/UserRegistration"
+import UserLogin from './components/UserLogin/UserLogin';
 
 function PageRouter() {
     const {option} = useContext(NavContext);
@@ -20,6 +22,8 @@ function PageRouter() {
       {option === "NewTripForm" && <NewTripForm/>}
       {option === "TripDetail" && <TripDetail/>}
       {option === "UpdateTripForm" && <UpdateTripForm/>}
+      {option === "UserRegistration" && <UserRegistration/>}
+      {option === "UserLogin" && <UserLogin/>}
       
     
 

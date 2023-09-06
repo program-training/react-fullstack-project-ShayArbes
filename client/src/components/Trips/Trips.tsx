@@ -3,7 +3,7 @@ import axios from "axios";
 import { NavContext } from "../conText/navContext";
 import { Data, } from "../conText/tripsContext";
 import {TripContext} from "../conText/tripsContext"
-import ButAllTrip from "../Nav/buttons/ButAllTrip";
+
 function Trips() {
   const tempSetOption = useContext(NavContext);
   const { setOption } = tempSetOption;
@@ -35,7 +35,7 @@ function Trips() {
     try {
       const res = await axios.delete(`http://localhost:3000/api/trips/${id}`, {
         headers: {
-          authorization: "test-token",
+          authorization: JSON.parse(localStorage.getItem('token') as string),
         },
       });
     } catch (error) {

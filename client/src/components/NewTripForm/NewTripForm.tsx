@@ -35,7 +35,7 @@ function CreateTrip() {
         newTrip,
         {
           headers: {
-            authorization: "test-token",
+            authorization: JSON.parse(localStorage.getItem('token') as string),
           },
         }
       );

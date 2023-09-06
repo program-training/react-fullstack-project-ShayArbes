@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 interface UserContextProviderProps {
   children: React.ReactNode;
 }
-type Opt = "SingUp" | "AllTrips" | "LogeIn" | "Home" | 'NewTripForm'|"TripDetail"|"UpdateTripForm";
+type Opt = "SingUp" | "AllTrips" | "LogeIn" | "Home" | 'NewTripForm'|"TripDetail"|"UpdateTripForm"|"UserRegistration"|"UserLogin";
 export interface NavContextType {
   option:Opt;
   setOption: (option:Opt) => void;
