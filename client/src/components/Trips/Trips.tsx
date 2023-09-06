@@ -1,14 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { NavContext } from "../conText/navContext";
-import { Data } from "../conText/tripsContext";
-
+import { Data, } from "../conText/tripsContext";
+import {TripContext} from "../conText/tripsContext"
+import ButAllTrip from "../Nav/buttons/ButAllTrip";
 function Trips() {
-  const tempSetoption = useContext(NavContext);
-  const { option, setOption } = tempSetoption;
+  const tempSetOption = useContext(NavContext);
+  const { setOption } = tempSetOption;
 
   const [data, setData] = useState<Data[]>([]);
   const [count, setCount] = useState(0);
+
+
+
+
+
+  const tripContext = useContext(TripContext);
+  const { setTrip } = tripContext;
+
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,17 +45,17 @@ function Trips() {
   };
   return (
     <div>
-      <div>
-        <button
-          className="m-3 btn btn-primary"
+      <div className="btn-group m-3">
+      <button
+          className="btn btn-primary m-2"
           onClick={() => {
-            setOption("CreateTrip");
+            setOption("NewTripForm");
           }}
         >
-          Create Trip
+          NewTrip
         </button>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary m-2"
           onClick={() => {
             setOption("Home");
           }}
@@ -55,8 +65,14 @@ function Trips() {
       </div>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {data.map((item) => (
-          <div className="col" key={item.id}>
-            <div className="card h-100 p-0">
+          <div className="col" key={item.id} onClick={()=>{
+            console.log(item);
+            
+            setTrip(item);
+            setOption("TripDetail");
+            
+          }}>
+            <div className="card h-100 p-0 shadow-lg">
               <img src={item.image} className="card-img-top h-100" />
               <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
@@ -67,14 +83,27 @@ function Trips() {
                   nulla eaque, eligendi cumque ducimus non saepe veniam
                   voluptate harum dicta natus animi sed!
                 </p>
+                <div className="btn-group">
+                <button
+                  className="btn btn-warning"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setTrip(item);
+                    setOption("UpdateTripForm");
+                  }}
+                >
+                  Edit
+                </button>
                 <button
                   className="btn btn-danger"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     deleteUser(item.id);
                   }}
                 >
                   Delete
                 </button>
+                </div>
                 <div className="card-footer text-muted mt-2 ">{item.startDate} - {item.endDate}</div>
               </div>
             </div>

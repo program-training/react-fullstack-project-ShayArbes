@@ -1,20 +1,16 @@
-
-import './App.css'
-import NavContextProvider from './components/conText/navContext'
-import PageRouter from './PageRouter'
-
+import "./App.css";
+import NavContextProvider from "./components/conText/navContext";
+import TripContextProvider from "./components/conText/tripsContext";
+import PageRouter from "./PageRouter";
 
 function App() {
-
   return (
-    <>
     <NavContextProvider>
-      <PageRouter/>
+      <TripContextProvider>
+        <PageRouter />
+      </TripContextProvider>
     </NavContextProvider>
-    
-
-    </>
-  )
+  );
 }
 
-export default App
+export default App;

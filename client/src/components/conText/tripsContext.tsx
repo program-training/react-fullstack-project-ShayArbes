@@ -6,10 +6,10 @@ export interface Data {
     destination: string
     startDate: string
     endDate: string
-    description: string
-    price: number
+    description?: string
+    price?: number
     image: string
-    activities: string[]
+    activities?: string[]
     }
 
 interface UserContextProviderProps {
@@ -33,3 +33,5 @@ interface UserContextProviderProps {
       </TripContext.Provider>
     );
   }
+
+  export default TripContextProvider
